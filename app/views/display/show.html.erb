@@ -1,0 +1,12 @@
+<%= link_to "Back", root_path %>
+
+
+<h1><%= @user.name %> </h1>
+
+<% @types.each do |x| %>
+	<p> <%= x.capitalize %> </p>
+	<% @myElements = @measurements.where(kind: x) %>
+
+	<%= line_chart @myElements.pluck(:created_at, :value), xtitle: "Args", ytitle: "Values"%>
+
+<% end %>
