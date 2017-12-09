@@ -1,10 +1,7 @@
-<h1>BlackBoxApp</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-
-<h1>Wybierz uzytkownika: </h1>
+<h1>Select user: </h1>
 
 <% @users.each do |u| %>
-<%= button_to u.name, eho_path(u.id), :method => :get %>
+<%= button_to u.name, eho_path(u.id), :method => :get, class: "btn" %>
 <% end %>
 
 

@@ -1,3 +1,41 @@
 // Place all the styles related to the display controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.btn {
+	color: white;
+	padding: 20px 30px;
+	font-size: 22px;
+	background-color: #0090AF;
+	width: 200px;
+	border-radius: 20px;
+	border: none;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+
+html {
+	height: 100%;
+}
+
+body {
+	text-align: center;
+    background: #ccff33; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ccff33, #ff9933); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ccff33, #ff9933); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ccff33, #ff9933); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ccff33, #ff9933); /* Standard syntax */
+}
+
+.logo {
+	width: 70%;
+	font-size: 60px;
+	border: 4px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+.highcharts-background {
+	/*fill: green;*/
+}
