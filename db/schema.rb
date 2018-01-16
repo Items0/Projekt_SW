@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define(version: 20171209191532) do
 
   create_table "measurements", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "training_id"
     t.string "kind"
     t.float "value"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

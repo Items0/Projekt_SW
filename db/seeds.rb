@@ -11,13 +11,27 @@ u2 = User.create(name: 'Jarkendar', password_digest: BCrypt::Password.create('my
 
 @kind_type = ['vertical', 'horizontal', 'acceleration']
 
+@training_user1 = 1
+@training_user2 = 1
 Random.new_seed
-100.times do |x|
-	@myRand= rand(3)
-	@myKind = @kind_type[@myRand]
-	@myValue = -100 + rand(300)
-	@myRand = 1 + rand(2)
-	Measurement.create(kind: @myKind, value: @myValue, user_id: @myRand)
+30.times do
+	if rand(2) == 0
+		100.times do |x|
+			@myRand= rand(3)
+			@myKind = @kind_type[@myRand]
+			@myValue = -100 + rand(300)
+			Measurement.create(user_id: 1, training_id: @training_user1, kind: @myKind, value: @myValue)
+		end
+		@training_user1 += 1
+	else
+		100.times do |x|
+			@myRand= rand(3)
+			@myKind = @kind_type[@myRand]
+			@myValue = -100 + rand(300)
+			Measurement.create(user_id: 2, training_id: @training_user2, kind: @myKind, value: @myValue) 
+		end
+		@training_user2 += 1
+	end
 end
 #u1.measurements << [m1]
 

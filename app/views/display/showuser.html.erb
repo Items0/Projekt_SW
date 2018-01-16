@@ -1,0 +1,13 @@
+<%= button_to "Back", root_path, :method => :get, class: "btn" %>
+
+
+<h1><%= @user.name %> </h1>
+<% @trainings.each do |x| %>
+
+	<%= button_to ("#"+x.training_id.to_s + "\n" + x.created_at.strftime("%d-%m-%Y")), displayTraining_path(@user.id, x.training_id), :method => :get, class: "btn" %>
+
+<% end %>
+
+
+
+

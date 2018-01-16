@@ -1,14 +1,16 @@
-<%= button_to "Back", root_path, :method => :get, class: "btn" %>
+<%= button_to "Back", displayUser_path, :method => :get, class: "btn" %>
 
-
-<h1><%= @user.name %> </h1>
+<h1> <%= @user.name %> </h1>
+<h2> <%= "#" + @measurements[0].training_id.to_s %> </h2>
+<h2> <%= @measurements[0].created_at %> </h2>
 
 <% @types.each do |x| %>
+
 	<p> <%= x.capitalize %> </p>
 	<% @myElements = @measurements.where(kind: x) %>
 
 	<%= line_chart @myElements.pluck(:created_at, :value), xtitle: "Args", ytitle: "Values" %>
 
-
 <% end %>
+
 
