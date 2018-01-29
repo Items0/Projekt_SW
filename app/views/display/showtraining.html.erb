@@ -1,16 +1,16 @@
 <%= button_to "Back", displayUser_path, :method => :get, class: "btn" %>
 
-<h1> <%= @user.name %> </h1>
-<h2> <%= "#" + @measurements[0].training_id.to_s %> </h2>
-<h2> <%= @measurements[0].created_at %> </h2>
+<h1> <%= @user %> </h1>
+<h2> <%= "#" + @measurements[0].trainingID.to_s %> </h2>
+<h2> Start: <%=  @measurements.first.myDate %> </h2>
+<h2> End: <%=  @measurements.last.myDate %> </h2>
+<h2> Duration: <%= Time.at(@measurements.last.myDate - @measurements.first.myDate).utc.strftime("%H:%M:%S") %> </h2>
+<%= @measurements.first.to_json %>
+<h2> Latitude </h2>
+<%= line_chart @measurements.pluck(:myDate, :latitude), xtitle: "Time", ytitle: "Latitude" %>
+<h2> Longtitude </h2>
+<%= line_chart @measurements.pluck(:myDate, :longtitude), xtitle: "Time", ytitle: "Longtitude" %>
 
-<% @types.each do |x| %>
 
-	<p> <%= x.capitalize %> </p>
-	<% @myElements = @measurements.where(kind: x) %>
-
-	<%= line_chart @myElements.pluck(:created_at, :value), xtitle: "Args", ytitle: "Values" %>
-
-<% end %>
 
 

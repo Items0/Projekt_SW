@@ -13,17 +13,11 @@
 ActiveRecord::Schema.define(version: 20171209191532) do
 
   create_table "measurements", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "training_id"
-    t.string "kind"
-    t.float "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
+    t.string "username"
+    t.integer "trainingID"
+    t.float "longtitude"
+    t.float "latitude"
+    t.datetime "myDate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

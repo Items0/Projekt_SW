@@ -1,7 +1,7 @@
 <h1>Select user: </h1>
 
-<% @users.each do |u| %>
-<%= button_to u.name, displayUser_path(u.id), :method => :get, class: "btn" %>
+<% @myUsers.each do |u| %>
+	<%= button_to u, displayUser_path(u), :method => :get, class: "btn" %>
 <% end %>
 
 
