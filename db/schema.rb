@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20171209191532) do
   create_table "measurements", force: :cascade do |t|
     t.string "username"
     t.integer "trainingID"
-    t.float "longtitude"
+    t.float "longitude"
     t.float "latitude"
     t.datetime "myDate"
     t.datetime "created_at", null: false

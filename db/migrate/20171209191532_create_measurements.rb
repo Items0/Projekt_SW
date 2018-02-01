@@ -3,7 +3,7 @@ class CreateMeasurements < ActiveRecord::Migration[5.1]
     create_table :measurements do |t|
       t.string :username
       t.integer :trainingID
-      t.float :longtitude
+      t.float :longitude
       t.float :latitude
       t.datetime :myDate
       t.timestamps

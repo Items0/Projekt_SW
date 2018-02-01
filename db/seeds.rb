@@ -8,19 +8,19 @@
 
 Random.new_seed
 @training_user1 = @training_user2 = 1
-30.times do
+20.times do
 	if rand(2) == 0
 		100.times do |x|
-			@exampleLongtitude = -100 + rand(300)
-			@exampleLatitude = -100 + rand(300)
-			Measurement.create(username: "Items", trainingID: @training_user1, longtitude: @exampleLongtitude, latitude: @exampleLatitude, myDate: rand(10.hours).seconds.ago)
+			@examplelongitude = rand(38)
+			@exampleLatitude =  rand(100)
+			Measurement.create(username: "Items", trainingID: @training_user1, longitude: @examplelongitude, latitude: @exampleLatitude, myDate: rand(1.hours).seconds.ago)
 		end
 		@training_user1 += 1
 	else
 		100.times do |x|
-			@exampleLongtitude = -100 + rand(300)
-			@exampleLatitude = -100 + rand(300)
-			Measurement.create(username: "Jarkendar", trainingID: @training_user2, longtitude: @exampleLongtitude, latitude: @exampleLatitude, myDate: rand(10.hours).seconds.ago)
+			@examplelongitude = rand(38)
+			@exampleLatitude = rand(100)
+			Measurement.create(username: "Jarkendar", trainingID: @training_user2, longitude: @examplelongitude, latitude: @exampleLatitude, myDate: rand(1.hours).seconds.ago)
 		end
 		@training_user2 += 1
 	end
