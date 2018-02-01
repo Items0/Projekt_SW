@@ -11,6 +11,14 @@ class DisplayController < ApplicationController
 	def showtraining
 		@user = params[:username]
 		@measurements = Measurement.where(username: @user, trainingID: params[:trainingid]).order(:myDate)
+
+		@distance = [0]
+		@speed = []
+		@measurements.each_cons(2) do |pre, cur|
+			distanceSample = Geocoder::Calculations.distance_between([pre.latitude, pre.longitude], [cur.latitude, cur.longitude])
+			@distance.push(distanceSample + @distance.last)
+			@speed.push(distanceSample * 3600 / (cur.myDate - pre.myDate) )
+		end
 	end
 	
 	def insert
@@ -19,6 +27,7 @@ class DisplayController < ApplicationController
 		puts("End")
 
 		@myJSON = JSON.parse(request.raw_post)
+
 		@username = @myJSON['username']
 		@trainingID = @myJSON['trainingID']
 		@longitude = @myJSON['longitude']

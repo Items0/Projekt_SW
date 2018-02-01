@@ -6,11 +6,9 @@
 <h2> End: <%=  @measurements.last.myDate %> </h2>
 <h2> Duration: <%= Time.at(@measurements.last.myDate - @measurements.first.myDate).utc.strftime("%H:%M:%S") %> </h2>
 
-<h2> Height</h2>
-<%= line_chart @measurements.pluck(:myDate, :latitude), xtitle: "Time", ytitle: "Height" %>
+<h2> Distance: <%= @distance.last.round(3)%> km </h2>
+
+<h2> Distance </h2>
+<%= line_chart  Hash[@measurements.pluck(:myDate).zip @distance], xtitle: "Time", ytitle: "Distance [km]" %>
 <h2> Speed </h2>
-<%= line_chart @measurements.pluck(:myDate, :longitude), xtitle: "Time", ytitle: "Speed" %>
-
-
-
-
+<%= line_chart Hash[@measurements.pluck(:myDate).zip @speed], xtitle: "Time", ytitle: "Speed [km/h]" %>

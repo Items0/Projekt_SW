@@ -61,4 +61,6 @@ gem 'bcrypt'
 
 # JSON
 gem 'active_model_serializers'
+# Geocoder
+gem 'geocoder'
 
