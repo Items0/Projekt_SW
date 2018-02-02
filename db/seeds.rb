@@ -13,14 +13,16 @@ Random.new_seed
 		100.times do |x|
 			@examplelongitude = rand(38)
 			@exampleLatitude =  rand(100)
-			Measurement.create(username: "Items", trainingID: @training_user1, longitude: @examplelongitude, latitude: @exampleLatitude, myDate: rand(1.hours).seconds.ago)
+			@exampleAltitude = 100 + rand(40)
+			Measurement.create(username: "Items", trainingID: @training_user1, longitude: @examplelongitude, latitude: @exampleLatitude, altitude: @exampleAltitude, myDate: rand(1.hours).seconds.ago)
 		end
 		@training_user1 += 1
 	else
 		100.times do |x|
 			@examplelongitude = rand(38)
 			@exampleLatitude = rand(100)
-			Measurement.create(username: "Jarkendar", trainingID: @training_user2, longitude: @examplelongitude, latitude: @exampleLatitude, myDate: rand(1.hours).seconds.ago)
+			@exampleAltitude = 100 + rand(40)
+			Measurement.create(username: "Jarkendar", trainingID: @training_user2, longitude: @examplelongitude, latitude: @exampleLatitude, altitude: @exampleAltitude, myDate: rand(1.hours).seconds.ago)
 		end
 		@training_user2 += 1
 	end

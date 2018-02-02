@@ -4,11 +4,14 @@
 <h2> <%= "#" + @measurements[0].trainingID.to_s %> </h2>
 <h2> Start: <%=  @measurements.first.myDate %> </h2>
 <h2> End: <%=  @measurements.last.myDate %> </h2>
-<h2> Duration: <%= Time.at(@measurements.last.myDate - @measurements.first.myDate).utc.strftime("%H:%M:%S") %> </h2>
-
-<h2> Distance: <%= @distance.last.round(3)%> km </h2>
-
+<% @myTime = @measurements.last.myDate - @measurements.first.myDate %>
+<h2> Duration: <%= Time.at(@myTime).utc.strftime("%H:%M:%S") %> </h2>
+<h2> Distance: <%= @distance.last.round(3) %> km </h2>
+<h2> Avg speed: <%= (@distance.last * 3600 /  (@myTime)).round(2) %> km/h</h2>
 <h2> Distance </h2>
 <%= line_chart  Hash[@measurements.pluck(:myDate).zip @distance], xtitle: "Time", ytitle: "Distance [km]" %>
 <h2> Speed </h2>
 <%= line_chart Hash[@measurements.pluck(:myDate).zip @speed], xtitle: "Time", ytitle: "Speed [km/h]" %>
+
+<h2> Altitude </h2>
+<%= line_chart @altitude, xtitle: "Time", ytitle: "Altitude [m]" %>

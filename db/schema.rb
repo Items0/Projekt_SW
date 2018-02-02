@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20171209191532) do
     t.integer "trainingID"
     t.float "longitude"
     t.float "latitude"
+    t.float "altitude"
     t.datetime "myDate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

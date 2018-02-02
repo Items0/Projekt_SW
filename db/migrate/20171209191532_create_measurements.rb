@@ -5,6 +5,7 @@ class CreateMeasurements < ActiveRecord::Migration[5.1]
       t.integer :trainingID
       t.float :longitude
       t.float :latitude
+      t.float :altitude
       t.datetime :myDate
       t.timestamps
     end

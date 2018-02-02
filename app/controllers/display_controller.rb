@@ -19,12 +19,13 @@ class DisplayController < ApplicationController
 			@distance.push(distanceSample + @distance.last)
 			@speed.push(distanceSample * 3600 / (cur.myDate - pre.myDate) )
 		end
+		@altitude = @measurements.where.not(altitude: 0).pluck(:myDate, :altitude)
 	end
 	
 	def insert
-		puts("Start")
-		puts(JSON.parse(params[:longitude]))
-		puts("End")
+		#puts("Start")
+		#puts(JSON.parse(request.raw_post))
+		#puts("End")
 
 		@myJSON = JSON.parse(request.raw_post)
 
@@ -32,21 +33,24 @@ class DisplayController < ApplicationController
 		@trainingID = @myJSON['trainingID']
 		@longitude = @myJSON['longitude']
 		@latitude = @myJSON['latitude']
+		@altitude = @myJSON['altitude']
 		@myMiliSeconds = @myJSON['time']
-		@myDate = Time.strptime(@myMiliSeconds.to_s, '%Q')
-		Measurement.create(username: @username, trainingID: @trainingID, longitude: @longitude, latitude: @latitude, myDate: @myDate)	
+		#@myDate = Time.strptime((@myMiliSeconds.to_f + 3600 * 1000).to_s, '%Q')
+		@myDate = Time.strptime((@myMiliSeconds).to_s, '%Q')
+		Measurement.create(username: @username, trainingID: @trainingID, longitude: @longitude, latitude: @latitude, altitude: @altitude, myDate: @myDate)	
 		render plain: "Inserted correctly\n"
 	end
 
 	def savebyget
-		#get 'saveme/user/:username/training/:trainingid/longitude/:longitude/latitude/:latitude/time/:time
+		#get 'saveme/user/:username/training/:trainingid/longitude/:longitude/latitude/:latitude/altitude/:altitude/time/:time
 		@username = params[:username]
 		@trainingID = params[:trainingid]
 		@longitude = params[:longitude]
 		@latitude = params[:latitude]
+		@altitude = params[:altitude]
 		@myMiliSeconds = params[:time]
 		@myDate = Time.strptime(@myMiliSeconds.to_s, '%Q')
-		Measurement.create(username: @username, trainingID: @trainingID, longitude: @longitude, latitude: @latitude, myDate: @myDate)	
+		Measurement.create(username: @username, trainingID: @trainingID, longitude: @longitude, latitude: @latitude, altitude: @altitude, myDate: @myDate)	
 		render plain: "OK"
 	end
 end
