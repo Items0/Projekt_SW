@@ -16,8 +16,8 @@ class DisplayController < ApplicationController
 		@speed = []
 		@measurements.each_cons(2) do |pre, cur|
 			distanceSample = Geocoder::Calculations.distance_between([pre.latitude, pre.longitude], [cur.latitude, cur.longitude])
-			@distance.push(distanceSample + @distance.last)
-			@speed.push(distanceSample * 3600 / (cur.myDate - pre.myDate) )
+			@distance.push((distanceSample + @distance.last).round(3))
+			@speed.push((distanceSample * 3600 / (cur.myDate - pre.myDate) ).round(3))
 		end
 		@altitude = @measurements.where.not(altitude: 0).pluck(:myDate, :altitude)
 	end
